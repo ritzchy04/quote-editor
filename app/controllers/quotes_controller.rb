@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
   
-  def def index
+  def index
     @quotes = Quote.all
   end
 
@@ -28,25 +28,14 @@ class QuotesController < ApplicationController
   end
 
   def update
-    @quote = Quote.find(quote_params)
-      if @quote.update_attributes(quote_params)
-        # flash[:success] = "Quote was successfully updated"
-        redirect_to quotes_path, notice: "Quote was successfully updated."
-      else
-        # flash[:error] = "Something went wrong"
-        render :edit
-      end
+    if @quote.update(quote_params)
+      redirect_to quotes_path, notice: "Quote was successfully updated."
+    end
   end
   
   def destroy
-    @quote = Quote.find(quote_params)
-    if @quote.destroy
-      # flash[:success] = 'Quote was successfully deleted.'
-      redirect_to quotes_path, notice: "Quote was successfully deleted."
-    # else
-      # flash[:error] = 'Something went wrong'
-      redirect_to quote@quotes_url
-    end
+    @quote.destroy
+    redirect_to quotes_path, notice: "Quote was successfully deleted."
   end
 
   private

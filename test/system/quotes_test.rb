@@ -12,7 +12,7 @@ class QuotesTest < ApplicationSystemTestCase
 
     # Expects to land on New quotes page, with respective h1 title header, when New Quote button is clicked
     click_on "New quote"
-    assert_selector "h1", text: "New Quote"
+    assert_selector "h1", text: "New quote"
   
 
     # Expects to redirected back to quotes#index page after 
@@ -46,7 +46,7 @@ class QuotesTest < ApplicationSystemTestCase
   end
 
   test "Destroying a quote" do
-    visits quotes_path
+    visit quotes_path
     assert_text @quote.name
 
     click_on "Delete", match: :first
