@@ -5,6 +5,7 @@ class QuotesTest < ApplicationSystemTestCase
   setup do
     @quote = quotes(:first)
   end
+
   test "Creating a new quote" do
     # Expects to see a Quotes title when we visit quotes#index page
     visit quotes_path
@@ -12,14 +13,11 @@ class QuotesTest < ApplicationSystemTestCase
 
     # Expects to land on New quotes page, with respective h1 title header, when New Quote button is clicked
     click_on "New quote"
-    assert_selector "h1", text: "New quote"
-  
-
-    # Expects to redirected back to quotes#index page after 
-    # filling in name input field with "Capybara quote", and having "Capybara quote"
-    # text added to the list
     fill_in "Name", with: "Capybara quote"
+
+    assert_selector "h1", text: "Quotes"
     click_on "Create quote"
+
     assert_selector "h1", text: "Quotes"
     assert_text "Capybara quote"
   end
@@ -36,9 +34,9 @@ class QuotesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Quotes"
 
     click_on "Edit", match: :first
-    assert_selector "h1", text: "Edit quote"
-
     fill_in "Name", with: "Updated quote"
+
+    assert_selector "h1", text: "Quotes"
     click_on "Update quote"
 
     assert_selector "h1", text: "Quotes"
