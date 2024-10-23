@@ -3,7 +3,7 @@ require "application_system_test_case"
 class QuotesTest < ApplicationSystemTestCase
 
   setup do
-    @quote = quotes(:first)
+    @quote = Quote.ordered.first
   end
 
   test "Creating a new quote" do
@@ -11,7 +11,7 @@ class QuotesTest < ApplicationSystemTestCase
     visit quotes_path
     assert_selector "h1", text: "Quotes"
 
-    # Expects to land on New quotes page, with respective h1 title header, when New Quote button is clicked
+    
     click_on "New quote"
     fill_in "Name", with: "Capybara quote"
 

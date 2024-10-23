@@ -1,0 +1,11 @@
+<%# 
+# render partial: "quotes/quote", locals: { quote: @quote } is the same as 
+# render @quote; thus 
+<%#= turbo_stream.prepend "quotes" do %>
+<%#= render partial: "quotes/quote", locals: { quote: @quote } %>
+<%# end %>
+<%# is the same as 
+# is the same as <%= turbo_stream.prepend "quotes", @quote %> 
+
+<%= turbo_stream.prepend "quotes", @quote %> 
+<%= turbo_stream.update Quote.new, "" %>
