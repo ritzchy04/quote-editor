@@ -70,3 +70,5 @@ end
 gem "simple_form", "~> 5.1.0"
 
 gem "cssbundling-rails", "~> 1.4"
+
+gem "redis", "~> 5.3"
